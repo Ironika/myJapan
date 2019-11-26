@@ -1,0 +1,32 @@
+@import "../../App.scss";
+
+.Home {
+    margin-top: 150px;
+    .homescreen {
+        margin: 0;
+    }
+    .presentation {
+        margin: 50px;
+        text-align: center;
+        h2 {
+            color: $second-color;
+            font-weight: bold;
+            font-size: 34px;
+        }
+        blockquote {
+            background-color: $second-color;
+            padding: 10px 20px;
+            font-family: $font;
+            display: inline-block;
+        }
+    }
+    .news {
+        margin: 50px;
+        text-align: center;
+        h2 {
+            color: $second-color;
+            font-weight: bold;
+            font-size: 34px;
+        }
+    }
+}
