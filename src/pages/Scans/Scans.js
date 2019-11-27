@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Scans.scss';
+
 const Scans = () => {
   return (
     <div className="Scans">

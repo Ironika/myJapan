@@ -1,11 +1,15 @@
 @import "../../App.scss";
 
 .card {
-    width: 31%;
+    width: 22%;
     box-shadow: 5px 5px 5px $main-color;
-    margin: 0 15px;
+    margin: 0 20px;
     margin-bottom: 25px;
     background-color: $second-color;
+    transition: 0.4s;
+    &:hover {
+        transform: scale(0.9, 0.9);
+    }
     a {
         text-decoration: none;
         color: inherit;
@@ -19,7 +23,15 @@
         padding: 10px;
         .date {
             margin: 0;
-            text-align: right;
+            float: right;
+        }
+        button {
+            background-color: $main-color;
+            border-radius: 100px;
+            padding: 10px 20px;
+            border: white;
+            color: white;
+            font-weight: bold;
         }
     }
 }

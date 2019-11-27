@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import News from './pages/News/News';
-import Scans from './pages/Scans';
+import Scans from './pages/Scans/Scans';
 
 import * as ROUTES from './routes';
 
