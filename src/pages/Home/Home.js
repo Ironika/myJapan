@@ -1,12 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { ParallaxBanner } from 'react-scroll-parallax';
+import { getNews } from '../../helpers/News'
+import Loader from '../../components/Loader/Loader'
+import Card from '../../components/News/Card'
 
 import './Home.scss';
 import homescreen from '../../assets/img/homescreen.jpg'
 import homescreen2 from '../../assets/img/homescreen2.jpg'
+import homescreen3 from '../../assets/img/homescreen3.jpg'
 
 const Home = () => {
+  const [news, setNews] = useState([]);
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    const fetchDatas = async () => {
+        let news = await getNews()
+        news.length = 3
+        setNews(news)
+        setLoader(false)
+    }
+
+    fetchDatas()
+}, []);
+
   return (
     <div className="Home">
 
@@ -28,9 +46,16 @@ const Home = () => {
                 <section>
                     <div className="news">
                       <h2>Last News</h2>
-
+                      <div className="card-container">
+                          {   loader ? <Loader /> :
+                              news.map(item => 
+                                  <Card key={item.pubDate} news={item} />
+                              )
+                          }
+                      </div>
                     </div>
                 </section>
+                <ParallaxBanner className="homescreen" layers={[{ image: homescreen3, amount: 0.5 }]} style={{height: '450px'}}></ParallaxBanner>
         </ParallaxProvider>
 
     </div>
