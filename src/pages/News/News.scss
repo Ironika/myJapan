@@ -2,4 +2,36 @@
 
 .News {
     margin-top: 150px;
+    h2 {
+        color: $second-color;
+        font-weight: bold;
+        font-size: 34px;
+        text-align: center;
+    }
+    .card-container {
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        .card {
+            width: 31%;
+            box-shadow: 5px 5px 5px $main-color;
+            margin: 0 15px;
+            margin-bottom: 25px;
+            background-color: $second-color;
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+            img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+            &-content {
+                padding: 10px;
+            }
+        }
+    }
 }

@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { fetchRss } from '../../helpers/News'
-import { ADALA, NAUTIJON } from '../../rss'
+import { getNews } from '../../helpers/News'
 
+import Card from '../../components/News/Card'
+import Loader from '../../components/Loader/Loader'
 import './News.scss';
 
 const News = () => {
-    const [adala, setAdala] = useState([]);
+    const [news, setNews] = useState([]);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
         const fetchDatas = async () => {
-            const newsAdala = await fetchRss(ADALA)
-            setAdala(adala)
+            const news = await getNews()
+            setNews(news)
+            setLoader(false)
         }
 
         fetchDatas()
-    }, [adala]);
+    }, []);
 
     return (
         <div className="News">
             <h2>NEWS</h2>
+            <div className="card-container">
+                {   loader ? <Loader /> :
+                    news.map(item => 
+                        <Card key={item.pubDate} news={item} />
+                    )
+                }
+            </div>
         </div>
     );
 }
