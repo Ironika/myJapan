@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { ParallaxBanner } from 'react-scroll-parallax';
+import { Link } from 'react-router-dom';
 import { getNews } from '../../helpers/News'
 import LazyLoad from 'react-lazyload';
 import Loader from '../../components/Loader/Loader'
@@ -10,6 +11,7 @@ import './Home.scss';
 import homescreen from '../../assets/img/homescreen.jpg'
 import homescreen2 from '../../assets/img/homescreen2.jpg'
 import homescreen3 from '../../assets/img/homescreen3.jpg'
+import { NEWS } from '../../routes'
 
 const Home = () => {
   const [news, setNews] = useState([]);
@@ -57,6 +59,9 @@ const Home = () => {
                                 </LazyLoad>
                               )
                           }
+                      </div>
+                      <div className="cta">
+                          <Link to={NEWS}>Voir plus</Link>
                       </div>
                     </div>
                 </section>

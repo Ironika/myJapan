@@ -21,6 +21,7 @@
         }
     }
     .news {
+        margin-bottom: 50px;
         h2 {
             color: $second-color;
             font-weight: bold;
@@ -33,6 +34,15 @@
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: flex-start;
+        }
+    }
+    .cta {
+        text-align: center;
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: $main-color;
+            padding: 10px 20px;
         }
     }
 }
