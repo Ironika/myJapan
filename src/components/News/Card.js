@@ -13,7 +13,7 @@ const Card = (props) => {
                     <button>{props.news.site}</button>
                     <span className="date">{pubDate.toLocaleString()}</span>
                     <h3>{props.news.title}</h3>
-                    <p>{props.news.desc}</p>
+                    <p>{props.news.desc.length > 200 ? props.news.desc.substring(0,150) + '...' : props.news.desc}</p>
                 </div>
             </a>
         </div>
