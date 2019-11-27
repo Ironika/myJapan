@@ -1,0 +1,12 @@
+export const mangas = [
+    'ONE PIECE',
+    'BORUTO',
+    'KIMETSU NO YAIBA',
+    'DEMON SLAYER',
+    'THE PROMISED NEVERLAND',
+    'YAKUSOKU NO NEVERLAND',
+    'MY HERO ACADEMIA',
+    'BOKU NO HERO',
+    'BLACK CLOVER',
+    'ONE PUNCH MAN'
+]
