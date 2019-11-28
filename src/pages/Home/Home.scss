@@ -5,13 +5,13 @@
     .homescreen {
         margin: 0;
     }
-    .presentation {
-        margin: 50px;
+    .flip-card-front, .flip-card-back {
         text-align: center;
         h1 {
             color: $second-color;
             font-weight: bold;
             font-size: 34px;
+            margin-top: 10px;
         }
         blockquote {
             background-color: $second-color;
@@ -21,6 +21,22 @@
         }
     }
     .news {
+        margin-bottom: 50px;
+        h2 {
+            color: $second-color;
+            font-weight: bold;
+            font-size: 34px;
+            text-align: center;
+        }
+        .card-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+    }
+    .scans {
         margin-bottom: 50px;
         h2 {
             color: $second-color;

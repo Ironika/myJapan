@@ -6,12 +6,13 @@ import { getNews } from '../../helpers/News'
 import LazyLoad from 'react-lazyload';
 import Loader from '../../components/Loader/Loader'
 import Card from '../../components/News/Card'
+import FlipCard from '../../components/Home/FlipCard'
 
 import './Home.scss';
 import homescreen from '../../assets/img/homescreen.jpg'
 import homescreen2 from '../../assets/img/homescreen2.jpg'
 import homescreen3 from '../../assets/img/homescreen3.jpg'
-import { NEWS } from '../../routes'
+import { NEWS, SCANS } from '../../routes'
 
 const Home = () => {
   const [news, setNews] = useState([]);
@@ -33,19 +34,8 @@ const Home = () => {
 
         <ParallaxProvider>
                 <ParallaxBanner className="homescreen" layers={[{ image: homescreen, amount: 0.5 }]} style={{height: '450px'}}></ParallaxBanner>
-                <section>
-                    <div className="presentation">
-                        <h1>Bienvenue sur MyJapan</h1>
-                        <p> Je partegerais avec vous à travers ce site, différentes actualités, photos, musiques, mangas ou animés en relation avec le Japon.
-                            <br/>
-                            De plus ce site me permettra d'experimenter différentes technologies web et servira de portefolio pour la suite.
-                            <br/>
-                            J'éspère que l'experience vous plaira, et vous souhaite une agréable visite.
-                        </p>
-                        <blockquote>猿も木から落ちる <br/> "Même le singe tombe de l'arbre"</blockquote>
-                    </div>
-                </section>
-                <LazyLoad placeholder={<div>Loading...</div>}>
+                <FlipCard />
+                <LazyLoad placeholder={<Loader />}>
                     <ParallaxBanner className="homescreen" layers={[{ image: homescreen2, amount: 0.5 }]} style={{height: '450px'}}></ParallaxBanner>
                 </LazyLoad>
                 <section>
@@ -54,7 +44,7 @@ const Home = () => {
                       <div className="card-container">
                           {   loader ? <Loader /> :
                               news.map(item =>
-                                <LazyLoad key={item.pubDate} placeholder={<div>Loading...</div>}>
+                                <LazyLoad key={item.pubDate} placeholder={<Loader />}>
                                   <Card key={item.pubDate} news={item} />
                                 </LazyLoad>
                               )
@@ -65,7 +55,26 @@ const Home = () => {
                       </div>
                     </div>
                 </section>
-                <ParallaxBanner className="homescreen" layers={[{ image: homescreen3, amount: 0.5 }]} style={{height: '450px'}}></ParallaxBanner>
+                <LazyLoad placeholder={<Loader />}>
+                  <ParallaxBanner className="homescreen" layers={[{ image: homescreen3, amount: 0.5 }]} style={{height: '450px'}}></ParallaxBanner>
+                </LazyLoad>
+                <section>
+                    <div className="scans">
+                      <h2>Last Scans</h2>
+                      <div className="card-container">
+                          {   /*loader ? <Loader /> :
+                              news.map(item =>
+                                <LazyLoad key={item.pubDate} placeholder={<Loader />}>
+                                  <Card key={item.pubDate} news={item} />
+                                </LazyLoad>
+                              )
+                          */}
+                      </div>
+                      <div className="cta">
+                          <Link to={SCANS}>Voir plus</Link>
+                      </div>
+                    </div>
+                </section>
         </ParallaxProvider>
 
     </div>

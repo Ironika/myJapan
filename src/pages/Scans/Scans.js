@@ -48,8 +48,8 @@ const Scans = () => {
       <div className="card-container">
           {   loader ? <Loader /> :
               displayedScans.map((item, index) =>
-                  <LazyLoad key={index} placeholder={<div>Loading...</div>}>
-                      <Card key={index} news={item} />
+                  <LazyLoad key={index} placeholder={<Loader />}>
+                      <Card news={item} />
                   </LazyLoad>
               )
           }

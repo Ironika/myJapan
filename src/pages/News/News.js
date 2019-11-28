@@ -46,9 +46,9 @@ const News = () => {
             <h1>NEWS</h1>
             <div className="card-container">
                 {   loader ? <Loader /> :
-                    displayedNews.map(item =>
-                        <LazyLoad key={item.pubDate} placeholder={<div>Loading...</div>}>
-                            <Card key={item.pubDate} news={item} />
+                    displayedNews.map((item, index) =>
+                        <LazyLoad key={index} placeholder={<Loader />}>
+                            <Card news={item} />
                         </LazyLoad>
                     )
                 }
