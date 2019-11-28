@@ -5,4 +5,9 @@ export const MANGASNEWS = 'https://www.manga-news.com/index.php/feed/news';
 
 // SCANS
 export const SCANTRAD = 'https://scantrad.net/rss/';
-export const TOF = 'https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95'
+export const TOF = 'https://www.webtoons.com/en/fantasy/tower-of-god/rss?title_no=95';
+export const MANGAFOX = 'http://fanfox.net/releases/';
+
+// ANIME
+export const CRUNCHYROLL = 'https://www.crunchyroll.com/rss/anime?lang=frFR';
+export const ADN = 'https://animedigitalnetwork.fr/rss'

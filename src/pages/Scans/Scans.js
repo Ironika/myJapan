@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import debounce from "lodash.debounce";
 import LazyLoad from 'react-lazyload';
-import { getScans } from '../../helpers/Scans'
+import { getScans, getScansVA } from '../../helpers/Scans'
 import Loader from '../../components/Loader/Loader'
 import Card from '../../components/Scans/Card'
 
@@ -17,6 +17,7 @@ const Scans = () => {
   useEffect(() => {
     const fetchDatas = async () => {
       const scans = await getScans()
+      // const scansVa = await getScansVA()
       setScans(scans)
       setDisplayedScans(scans.slice(0, pageToDisplay))
       setLoader(false)
@@ -46,9 +47,9 @@ const Scans = () => {
       <h1>SCANS</h1>
       <div className="card-container">
           {   loader ? <Loader /> :
-              displayedScans.map(item =>
-                  <LazyLoad key={item.pubDate} placeholder={<div>Loading...</div>}>
-                      <Card key={item.pubDate} news={item} />
+              displayedScans.map((item, index) =>
+                  <LazyLoad key={index} placeholder={<div>Loading...</div>}>
+                      <Card key={index} news={item} />
                   </LazyLoad>
               )
           }

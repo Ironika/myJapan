@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { mangas } from '../mangas'
+import { scansList, animeList } from '../mangas'
 
 var convert = require('xml-js');
 
@@ -9,11 +9,14 @@ export const fetchRss = async (url) => {
     return json
 }
 
-export const isInMangas = (title) => {
-    let isInMangas = false
-    for(let item of mangas) {
+export const isInList = (title, type) => {
+    let isInList = false
+    let list = scansList
+    if(type === 'animes')
+        list = animeList
+    for(let item of list) {
         if(title.includes(item))
-            isInMangas = true
+            isInList = true
     }
-    return isInMangas
+    return isInList
 }
