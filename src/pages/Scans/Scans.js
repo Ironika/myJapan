@@ -3,6 +3,7 @@ import debounce from "lodash.debounce";
 import LazyLoad from 'react-lazyload';
 import { getScans, getScansVA } from '../../helpers/Scans'
 import Loader from '../../components/Loader/Loader'
+import CardVa from '../../components/Scans/CardVa'
 import Card from '../../components/Scans/Card'
 
 import './Scans.scss';
@@ -10,29 +11,36 @@ import './Scans.scss';
 const Scans = () => {
   const pageToDisplay = 12
   const [scans, setScans] = useState([])
-  const [displayedScans, setDisplayedScans] = useState([])
+  const [scansVa, setScansVa] = useState([])
+  const [displayedScansVa, setDisplayedScansVa] = useState([])
   const [hasMore, setHasMore] = useState(true)
   const [loader, setLoader] = useState(true)
+  const [loaderVa, setLoaderVa] = useState(true)
 
   useEffect(() => {
-    const fetchDatas = async () => {
+    const fetchScans = async () => {
       const scans = await getScans()
-      // const scansVa = await getScansVA()
       setScans(scans)
-      setDisplayedScans(scans.slice(0, pageToDisplay))
       setLoader(false)
     }
+    const fetchScansVa = async () => {
+      const scansVa = await getScansVA()
+      setScansVa(scansVa)
+      setDisplayedScansVa(scansVa.slice(0, pageToDisplay))
+      setLoaderVa(false)
+    }
 
-    fetchDatas()
+    fetchScans()
+    fetchScansVa()
   }, []);
 
   const loadItems = () => {
-    let nbToDisplay = displayedScans.length + pageToDisplay
-    if (nbToDisplay > scans.length) {
-      nbToDisplay = scans.length
+    let nbToDisplay = displayedScansVa.length + pageToDisplay
+    if (nbToDisplay > scansVa.length) {
+      nbToDisplay = scansVa.length
       setHasMore(false)
     }
-    setDisplayedScans(scans.slice(0, nbToDisplay))
+    setDisplayedScansVa(scansVa.slice(0, nbToDisplay))
   }
 
   window.onscroll = debounce(() => {
@@ -45,14 +53,29 @@ const Scans = () => {
   return (
     <div className="Scans">
       <h1>SCANS</h1>
-      <div className="card-container">
-          {   loader ? <Loader /> :
-              displayedScans.map((item, index) =>
-                  <LazyLoad key={index} placeholder={<Loader />}>
-                      <Card news={item} />
-                  </LazyLoad>
+      <div className="container">
+        <div className="left">
+          <div className="card-container">
+            {loader ? <Loader /> :
+              scans.map((item, index) =>
+                <LazyLoad key={index} placeholder={<Loader />}>
+                  <Card news={item} />
+                </LazyLoad>
               )
-          }
+            }
+          </div>
+        </div>
+        <div className="right">
+          <div className="card-container">
+              {loaderVa ? <Loader /> :
+                displayedScansVa.map((item, index) =>
+                  <LazyLoad key={index} placeholder={<Loader />}>
+                    <CardVa news={item} />
+                  </LazyLoad>
+                )
+              }
+          </div>
+        </div>
       </div>
     </div>
   );

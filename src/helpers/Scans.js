@@ -5,25 +5,15 @@ import Axios from 'axios';
 export const getScans = async () => {
     let scans = []
     let scantrad = await getScantrad()
-    let mangaFox = await getMangaFox()
-
-    scans = scans.concat(scantrad, mangaFox)
-
+    scans = scans.concat(scantrad)
     scans.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-
     return scans
 }
 
 export const getScansVA = async () => {
     let scans = []
     let mangaFox = await getMangaFox()
-
     scans = scans.concat(mangaFox)
-
-    // scans.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-
-    console.log(scans)
-
     return scans
 }
 
