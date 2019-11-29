@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-if(!sessionStorage.getItem('cache'))
-    sessionStorage.setItem('cache', JSON.stringify({}))
+if(!localStorage.getItem('cache'))
+    localStorage.setItem('cache', JSON.stringify({}))
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

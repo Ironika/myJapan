@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import debounce from "lodash.debounce";
 import LazyLoad from 'react-lazyload';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import { ParallaxBanner } from 'react-scroll-parallax';
 import { getScans, getScansVA } from '../../helpers/Scans'
 import { dateDiff } from '../../helpers/Shared'
 import Loader from '../../components/Loader/Loader'
 import CardVa from '../../components/Scans/CardVa'
 import Card from '../../components/Scans/Card'
+import banner from '../../assets/img/banner.jpg'
 
 import './Scans.scss';
 
@@ -31,22 +34,26 @@ const Scans = () => {
       setLoaderVa(false)
     }
 
-    const cache = JSON.parse(sessionStorage.getItem('cache'))
-    if(cache.scans && dateDiff(new Date(cache.scansDate), new Date()).min < 5 ) {
-        const currentScans = cache.scans
-        setScans(currentScans)
-        setLoader(false)
-    } else {
+    const cache = JSON.parse(localStorage.getItem('cache'))
+    if (cache.scans) {
+      const currentScans = cache.scans
+      setScans(currentScans)
+      setLoader(false)
+      if (dateDiff(new Date(cache.scansDate), new Date()).min < 5)
         fetchScans()
+    } else {
+      fetchScans()
     }
 
-    if(cache.scansVa && dateDiff(new Date(cache.scansVaDate), new Date()).min < 5 ) {
+    if (cache.scansVa) {
       const currentScansVa = cache.scansVa
       setScansVa(currentScansVa)
       setDisplayedScansVa(currentScansVa.slice(0, pageToDisplay))
       setLoaderVa(false)
-    } else {
+      if (dateDiff(new Date(cache.scansVaDate), new Date()).min < 5)
         fetchScansVa()
+    } else {
+      fetchScansVa()
     }
 
   }, []);
@@ -69,21 +76,24 @@ const Scans = () => {
 
   return (
     <div className="Scans">
-      <h1>SCANS</h1>
-      <div className="container">
-        <div className="left">
-          <div className="card-container">
-            {loader ? <Loader /> :
-              scans.map((item, index) =>
-                <LazyLoad key={index} placeholder={<Loader />}>
-                  <Card news={item} />
-                </LazyLoad>
-              )
-            }
+      <ParallaxProvider>
+        <ParallaxBanner className="homescreen" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
+          <h1 className="title">SCANS</h1>
+        </ParallaxBanner>
+        <div className="container">
+          <div className="left">
+            <div className="card-container">
+              {loader ? <Loader /> :
+                scans.map((item, index) =>
+                  <LazyLoad key={index} placeholder={<Loader />}>
+                    <Card news={item} />
+                  </LazyLoad>
+                )
+              }
+            </div>
           </div>
-        </div>
-        <div className="right">
-          <div className="card-container">
+          <div className="right">
+            <div className="card-container">
               {loaderVa ? <Loader /> :
                 displayedScansVa.map((item, index) =>
                   <LazyLoad key={index} placeholder={<Loader />}>
@@ -91,9 +101,10 @@ const Scans = () => {
                   </LazyLoad>
                 )
               }
+            </div>
           </div>
         </div>
-      </div>
+      </ParallaxProvider>
     </div>
   );
 }

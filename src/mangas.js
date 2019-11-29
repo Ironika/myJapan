@@ -6,7 +6,7 @@ export const scansList = [
     'THE PROMISED NEVERLAND',
     'YAKUSOKU NO NEVERLAND',
     'MY HERO ACADEMIA',
-    'BOKU NO HERO',
+    'BOKU NO HERO ACADEMIA',
     'BLACK CLOVER',
     'ONE PUNCH MAN',
     'DRAGON BALL SUPER',

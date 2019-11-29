@@ -10,3 +10,7 @@ body {
     background-color: $five-color;
     font-family: $font;
 }
+
+.parallax-outer {
+    z-index: -1;
+}

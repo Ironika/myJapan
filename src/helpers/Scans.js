@@ -8,10 +8,10 @@ export const getScans = async () => {
     scans = scans.concat(scantrad)
     scans.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
 
-    let cache = JSON.parse(sessionStorage.getItem('cache'))
+    let cache = JSON.parse(localStorage.getItem('cache'))
     cache.scans = scans
     cache.scansDate = new Date()
-    sessionStorage.setItem('cache', JSON.stringify(cache))
+    localStorage.setItem('cache', JSON.stringify(cache))
 
     return scans
 }
@@ -21,10 +21,10 @@ export const getScansVA = async () => {
     let mangaFox = await getMangaFox()
     scansVa = scansVa.concat(mangaFox)
 
-    let cache = JSON.parse(sessionStorage.getItem('cache'))
+    let cache = JSON.parse(localStorage.getItem('cache'))
     cache.scansVa = scansVa
     cache.scansVaDate = new Date()
-    sessionStorage.setItem('cache', JSON.stringify(cache))
+    localStorage.setItem('cache', JSON.stringify(cache))
 
     return scansVa
 }

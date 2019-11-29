@@ -1,0 +1,17 @@
+@import "../../../App.scss";
+
+.description {
+    text-align: center;
+    h2 {
+        color: $second-color;
+        font-weight: bold;
+        font-size: 34px;
+        margin-top: 10px;
+    }
+    blockquote {
+        background-color: $second-color;
+        padding: 10px 20px;
+        font-family: $font;
+        display: inline-block;
+    }
+}

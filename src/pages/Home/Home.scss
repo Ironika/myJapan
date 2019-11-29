@@ -1,24 +1,15 @@
 @import "../../App.scss";
 
 .Home {
-    margin-top: 150px;
+    .title {
+        color: white;
+        font-weight: bold;
+        font-size: 40px;
+        text-align: center;
+        margin-top: 12%;
+    }
     .homescreen {
         margin: 0;
-    }
-    .flip-card-front, .flip-card-back {
-        text-align: center;
-        h1 {
-            color: $second-color;
-            font-weight: bold;
-            font-size: 34px;
-            margin-top: 10px;
-        }
-        blockquote {
-            background-color: $second-color;
-            padding: 10px 20px;
-            font-family: $font;
-            display: inline-block;
-        }
     }
     .news {
         margin-bottom: 50px;

@@ -3,9 +3,11 @@ import { getNews } from '../../helpers/News'
 import { dateDiff } from '../../helpers/Shared'
 import LazyLoad from 'react-lazyload';
 import debounce from "lodash.debounce";
-
+import { ParallaxProvider } from 'react-scroll-parallax';
+import { ParallaxBanner } from 'react-scroll-parallax';
 import Card from '../../components/News/Card'
 import Loader from '../../components/Loader/Loader'
+import banner from '../../assets/img/banner.jpg'
 import './News.scss';
 
 const News = () => {
@@ -23,12 +25,14 @@ const News = () => {
             setLoader(false)
         }
 
-        const cache = JSON.parse(sessionStorage.getItem('cache'))
-        if(cache.news && dateDiff(new Date(cache.newsDate), new Date()).min < 5 ) {
+        const cache = JSON.parse(localStorage.getItem('cache'))
+        if(cache.news) {
             const currentNews = cache.news
             setNews(currentNews)
             setDisplayedNews(currentNews.slice(0, pageToDisplay))
             setLoader(false)
+            if(dateDiff(new Date(cache.newsDate), new Date()).min < 5)
+                fetchDatas()
         } else {
             fetchDatas()
         }
@@ -53,14 +57,18 @@ const News = () => {
 
     return (
         <div className="News">
-            <h1>NEWS</h1>
-            <div className="card-container">
-                {   loader ? <Loader /> :
-                    displayedNews.map((item, index) =>
-                        <Card key={index} news={item} />
-                    )
-                }
-            </div>
+            <ParallaxProvider>
+                <ParallaxBanner className="homescreen" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
+                    <h1 className="title">NEWS</h1>
+                </ParallaxBanner>
+                <div className="card-container">
+                    {   loader ? <Loader /> :
+                        displayedNews.map((item, index) =>
+                            <Card key={index} news={item} />
+                        )
+                    }
+                </div>
+            </ParallaxProvider>
         </div>
     );
 }
