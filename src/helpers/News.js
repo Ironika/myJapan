@@ -13,6 +13,11 @@ export const getNews = async () => {
 
     news.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
 
+    let cache = JSON.parse(sessionStorage.getItem('cache'))
+    cache.news = news
+    cache.newsDate = new Date()
+    sessionStorage.setItem('cache', JSON.stringify(cache))
+
     return news
 }
 

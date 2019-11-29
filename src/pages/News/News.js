@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getNews } from '../../helpers/News'
+import { dateDiff } from '../../helpers/Shared'
 import LazyLoad from 'react-lazyload';
 import debounce from "lodash.debounce";
 
@@ -16,13 +17,22 @@ const News = () => {
 
     useEffect(() => {
         const fetchDatas = async () => {
-            const news = await getNews()
-            setNews(news)
-            setDisplayedNews(news.slice(0, pageToDisplay))
+            const currentNews = await getNews()
+            setNews(currentNews)
+            setDisplayedNews(currentNews.slice(0, pageToDisplay))
             setLoader(false)
         }
 
-        fetchDatas()
+        const cache = JSON.parse(sessionStorage.getItem('cache'))
+        if(cache.news && dateDiff(new Date(cache.newsDate), new Date()).min < 5 ) {
+            const currentNews = cache.news
+            setNews(currentNews)
+            setDisplayedNews(currentNews.slice(0, pageToDisplay))
+            setLoader(false)
+        } else {
+            fetchDatas()
+        }
+
     }, []);
 
     const loadItems = () => {
@@ -47,9 +57,7 @@ const News = () => {
             <div className="card-container">
                 {   loader ? <Loader /> :
                     displayedNews.map((item, index) =>
-                        <LazyLoad key={index} placeholder={<Loader />}>
-                            <Card news={item} />
-                        </LazyLoad>
+                        <Card key={index} news={item} />
                     )
                 }
             </div>

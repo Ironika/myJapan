@@ -7,14 +7,26 @@ export const getScans = async () => {
     let scantrad = await getScantrad()
     scans = scans.concat(scantrad)
     scans.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+
+    let cache = JSON.parse(sessionStorage.getItem('cache'))
+    cache.scans = scans
+    cache.scansDate = new Date()
+    sessionStorage.setItem('cache', JSON.stringify(cache))
+
     return scans
 }
 
 export const getScansVA = async () => {
-    let scans = []
+    let scansVa = []
     let mangaFox = await getMangaFox()
-    scans = scans.concat(mangaFox)
-    return scans
+    scansVa = scansVa.concat(mangaFox)
+
+    let cache = JSON.parse(sessionStorage.getItem('cache'))
+    cache.scansVa = scansVa
+    cache.scansVaDate = new Date()
+    sessionStorage.setItem('cache', JSON.stringify(cache))
+
+    return scansVa
 }
 
 const getScantrad = async () => {
@@ -30,7 +42,7 @@ const getMangaFox = async () => {
         let data = formatJsonMangaFox(json)
         datas = datas.concat(data)
     }
-    
+
     return datas
 }
 

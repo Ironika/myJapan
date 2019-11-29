@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import debounce from "lodash.debounce";
 import LazyLoad from 'react-lazyload';
 import { getScans, getScansVA } from '../../helpers/Scans'
+import { dateDiff } from '../../helpers/Shared'
 import Loader from '../../components/Loader/Loader'
 import CardVa from '../../components/Scans/CardVa'
 import Card from '../../components/Scans/Card'
@@ -19,19 +20,35 @@ const Scans = () => {
 
   useEffect(() => {
     const fetchScans = async () => {
-      const scans = await getScans()
-      setScans(scans)
+      const currentScans = [...await getScans()]
+      setScans(currentScans)
       setLoader(false)
     }
     const fetchScansVa = async () => {
-      const scansVa = await getScansVA()
-      setScansVa(scansVa)
-      setDisplayedScansVa(scansVa.slice(0, pageToDisplay))
+      const currentScansVa = [...await getScansVA()]
+      setScansVa(currentScansVa)
+      setDisplayedScansVa(currentScansVa.slice(0, pageToDisplay))
       setLoaderVa(false)
     }
 
-    fetchScans()
-    fetchScansVa()
+    const cache = JSON.parse(sessionStorage.getItem('cache'))
+    if(cache.scans && dateDiff(new Date(cache.scansDate), new Date()).min < 5 ) {
+        const currentScans = cache.scans
+        setScans(currentScans)
+        setLoader(false)
+    } else {
+        fetchScans()
+    }
+
+    if(cache.scansVa && dateDiff(new Date(cache.scansVaDate), new Date()).min < 5 ) {
+      const currentScansVa = cache.scansVa
+      setScansVa(currentScansVa)
+      setDisplayedScansVa(currentScansVa.slice(0, pageToDisplay))
+      setLoaderVa(false)
+    } else {
+        fetchScansVa()
+    }
+
   }, []);
 
   const loadItems = () => {
