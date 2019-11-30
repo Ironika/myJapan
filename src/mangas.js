@@ -66,4 +66,13 @@ export const scansList = [
 export const animeList = [
     'ONE PIECE',
     'BORUTO',
+    'MY HERO ACADEMIA',
+    'BOKU NO HERO ACADEMIA',
+    'SWORD ART ONLINE',
+    'DR. STONE',
+    'ENEN NO SHOUBOUTAI',
+    'RADIANT',
+    'AHIRU NO SORA',
+    'NANATSU NO TAIZAI',
+    'BLACK CLOVER'
 ]

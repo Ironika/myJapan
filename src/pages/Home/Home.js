@@ -38,7 +38,7 @@ const Home = () => {
       currentNews.length = 4
       setNews(currentNews)
       setLoader(false)
-      if(dateDiff(new Date(cache.newsDate), new Date()).min < 5)
+      if(dateDiff(new Date(cache.newsDate), new Date()).min > 5)
         fetchDatas()
     } else {
       fetchDatas()

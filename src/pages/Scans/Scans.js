@@ -14,6 +14,7 @@ import './Scans.scss';
 
 const Scans = () => {
   const pageToDisplay = 12
+  const [nbToDisplay, setNbToDisplay] = useState(12)
   const [scans, setScans] = useState([])
   const [scansVa, setScansVa] = useState([])
   const [displayedScansVa, setDisplayedScansVa] = useState([])
@@ -27,11 +28,14 @@ const Scans = () => {
       setScans(currentScans)
       setLoader(false)
     }
-    const fetchScansVa = async () => {
+    const fetchScansVa = async (flag) => {
       const currentScansVa = [...await getScansVA()]
       setScansVa(currentScansVa)
-      setDisplayedScansVa(currentScansVa.slice(0, pageToDisplay))
+      setDisplayedScansVa(currentScansVa.slice(0, nbToDisplay))
       setLoaderVa(false)
+      if(flag) {
+        setHasMore(true)
+      }
     }
 
     const cache = JSON.parse(localStorage.getItem('cache'))
@@ -39,7 +43,7 @@ const Scans = () => {
       const currentScans = cache.scans
       setScans(currentScans)
       setLoader(false)
-      if (dateDiff(new Date(cache.scansDate), new Date()).min < 5)
+      if (dateDiff(new Date(cache.scansDate), new Date()).min > 10)
         fetchScans()
     } else {
       fetchScans()
@@ -50,8 +54,9 @@ const Scans = () => {
       setScansVa(currentScansVa)
       setDisplayedScansVa(currentScansVa.slice(0, pageToDisplay))
       setLoaderVa(false)
-      if (dateDiff(new Date(cache.scansVaDate), new Date()).min < 5)
-        fetchScansVa()
+      if (dateDiff(new Date(cache.scansVaDate), new Date()).min > 10){
+        fetchScansVa(true)
+      }
     } else {
       fetchScansVa()
     }
@@ -59,12 +64,13 @@ const Scans = () => {
   }, []);
 
   const loadItems = () => {
-    let nbToDisplay = displayedScansVa.length + pageToDisplay
-    if (nbToDisplay > scansVa.length) {
-      nbToDisplay = scansVa.length
+    let currentNbToDisplay = displayedScansVa.length + pageToDisplay
+    if (currentNbToDisplay > scansVa.length) {
+      currentNbToDisplay = scansVa.length
       setHasMore(false)
     }
-    setDisplayedScansVa(scansVa.slice(0, nbToDisplay))
+    setNbToDisplay(currentNbToDisplay)
+    setDisplayedScansVa(scansVa.slice(0, currentNbToDisplay))
   }
 
   window.onscroll = debounce(() => {
@@ -97,7 +103,7 @@ const Scans = () => {
               {loaderVa ? <Loader /> :
                 displayedScansVa.map((item, index) =>
                   <LazyLoad key={index} placeholder={<Loader />}>
-                    <CardVa news={item} />
+                    <CardVa item={item} />
                   </LazyLoad>
                 )
               }

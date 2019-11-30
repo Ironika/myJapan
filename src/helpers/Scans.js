@@ -73,11 +73,11 @@ const formatJsonMangaFox = (json) => {
     const ul = doc.getElementsByClassName('manga-list-4-list')[0]
     for(let i = 0; i < ul.children.length; i++) {
         let title = ul.children[i].children[1].innerText
-        if(isInList(title.toUpperCase(), 'scans') && ul.children[i].children[3].children[0]) {
+        if(isInList(title.toUpperCase(), 'scans')) {
             let img = ul.children[i].children[0].children[0].attributes[1].value
             let date = ul.children[i].children[2].children[0].innerText
-            let chapt = ul.children[i].children[3].children[0].innerText.replace('Ch.', '')
-            let link = ul.children[i].children[3].children[0].children[1].attributes[0].value
+            let chapt = ul.children[i].children[3].children[0] ? ul.children[i].children[3].children[0].innerText.replace('Ch.', '') : ''
+            let link = ul.children[i].children[3].children[0] ? ul.children[i].children[3].children[0].children[1].attributes[0].value : ul.children[i].children[0].attributes[0].value
             let item = {
                 title: title + ' ' + chapt,
                 link: 'http://fanfox.net' + link,
