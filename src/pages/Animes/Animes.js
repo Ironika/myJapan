@@ -4,7 +4,7 @@ import { dateDiff } from '../../helpers/Shared'
 import debounce from "lodash.debounce";
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { ParallaxBanner } from 'react-scroll-parallax';
-import Card from '../../components/Scans/CardVa'
+import Card from '../../components/Animes/Card'
 import Loader from '../../components/Loader/Loader'
 import banner from '../../assets/img/banner.jpg'
 import './Animes.scss';
@@ -30,7 +30,7 @@ const Animes = () => {
             setAnimes(currentAnimes)
             setDisplayedAnimes(currentAnimes.slice(0, pageToDisplay))
             setLoader(false)
-            if(dateDiff(new Date(cache.animesDate), new Date()).min > 0)
+            if(dateDiff(new Date(cache.animesDate), new Date()).min > 15)
                 fetchDatas()
         } else {
             fetchDatas()

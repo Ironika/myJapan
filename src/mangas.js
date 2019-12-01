@@ -71,8 +71,10 @@ export const animeList = [
     'SWORD ART ONLINE',
     'DR. STONE',
     'ENEN NO SHOUBOUTAI',
+    'FIRE FORCE',
     'RADIANT',
     'AHIRU NO SORA',
     'NANATSU NO TAIZAI',
-    'BLACK CLOVER'
+    'BLACK CLOVER',
+    'BEASTARS'
 ]

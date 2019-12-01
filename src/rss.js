@@ -12,3 +12,4 @@ export const MANGAFOX = 'http://fanfox.net/releases/';
 export const CRUNCHYROLL = 'https://www.crunchyroll.com/rss/anime?lang=frFR';
 export const ADN = 'https://animedigitalnetwork.fr/rss';
 export const ANIME_SEIKOU = 'https://anime-saikou.com/page/';
+export const UNIVERSANIMEIZ = 'https://www.universanimeiz.com/page/'

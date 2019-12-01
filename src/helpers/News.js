@@ -88,7 +88,7 @@ const formatJsonMangasNews = (json) => {
             link: items[i].link['_text'],
             pubDate: items[i].pubDate['_text'],
             site: 'Mangas-News',
-            img: src[0]
+            img: src ? src[0] : adala
         }
         array.push(item)
     }
