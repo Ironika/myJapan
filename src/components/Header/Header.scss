@@ -35,10 +35,12 @@
                 padding: 20px;
                 &:hover {
                   color: $second-color;
+                  text-shadow: black 0.5px 0.5px;
                 }
             }
             .active {
               color: $second-color;
+              text-shadow: black 0.5px 0.5px;
             }
         }
         .logo {
