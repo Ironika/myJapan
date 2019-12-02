@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "https://ironika.github.io/myJapan/static/css/main.558d6534.chunk.css",
-    "main.js": "https://ironika.github.io/myJapan/static/js/main.177983b9.chunk.js",
-    "main.js.map": "https://ironika.github.io/myJapan/static/js/main.177983b9.chunk.js.map",
-    "runtime-main.js": "https://ironika.github.io/myJapan/static/js/runtime-main.676d104b.js",
-    "runtime-main.js.map": "https://ironika.github.io/myJapan/static/js/runtime-main.676d104b.js.map",
-    "static/js/2.5ca209f4.chunk.js": "https://ironika.github.io/myJapan/static/js/2.5ca209f4.chunk.js",
-    "static/js/2.5ca209f4.chunk.js.map": "https://ironika.github.io/myJapan/static/js/2.5ca209f4.chunk.js.map",
-    "index.html": "https://ironika.github.io/myJapan/index.html",
-    "precache-manifest.e9c3dfd8c3b9822d53faba09967a65cd.js": "https://ironika.github.io/myJapan/precache-manifest.e9c3dfd8c3b9822d53faba09967a65cd.js",
-    "service-worker.js": "https://ironika.github.io/myJapan/service-worker.js",
-    "static/css/main.558d6534.chunk.css.map": "https://ironika.github.io/myJapan/static/css/main.558d6534.chunk.css.map",
-    "static/media/adala.png": "https://ironika.github.io/myJapan/static/media/adala.7c8d63fd.png",
-    "static/media/banner.jpg": "https://ironika.github.io/myJapan/static/media/banner.7395ebb6.jpg",
-    "static/media/cerisier.png": "https://ironika.github.io/myJapan/static/media/cerisier.ef6ecf9b.png",
-    "static/media/homescreen.jpg": "https://ironika.github.io/myJapan/static/media/homescreen.4f6a802d.jpg",
-    "static/media/homescreen2.jpg": "https://ironika.github.io/myJapan/static/media/homescreen2.7933a83d.jpg",
-    "static/media/homescreen3.jpg": "https://ironika.github.io/myJapan/static/media/homescreen3.a36ad686.jpg",
-    "static/media/loader.gif": "https://ironika.github.io/myJapan/static/media/loader.7b3f4161.gif"
+    "main.css": "/static/css/main.558d6534.chunk.css",
+    "main.js": "/static/js/main.2b2e469c.chunk.js",
+    "main.js.map": "/static/js/main.2b2e469c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f9df6959.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f9df6959.js.map",
+    "static/js/2.5ca209f4.chunk.js": "/static/js/2.5ca209f4.chunk.js",
+    "static/js/2.5ca209f4.chunk.js.map": "/static/js/2.5ca209f4.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.80211353c103ecace729e5fff61a12fc.js": "/precache-manifest.80211353c103ecace729e5fff61a12fc.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.558d6534.chunk.css.map": "/static/css/main.558d6534.chunk.css.map",
+    "static/media/adala.png": "/static/media/adala.7c8d63fd.png",
+    "static/media/banner.jpg": "/static/media/banner.7395ebb6.jpg",
+    "static/media/cerisier.png": "/static/media/cerisier.ef6ecf9b.png",
+    "static/media/homescreen.jpg": "/static/media/homescreen.4f6a802d.jpg",
+    "static/media/homescreen2.jpg": "/static/media/homescreen2.7933a83d.jpg",
+    "static/media/homescreen3.jpg": "/static/media/homescreen3.a36ad686.jpg",
+    "static/media/loader.gif": "/static/media/loader.7b3f4161.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.676d104b.js",
+    "static/js/runtime-main.f9df6959.js",
     "static/js/2.5ca209f4.chunk.js",
     "static/css/main.558d6534.chunk.css",
-    "static/js/main.177983b9.chunk.js"
+    "static/js/main.2b2e469c.chunk.js"
   ]
 }
