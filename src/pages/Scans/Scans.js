@@ -83,7 +83,7 @@ const Scans = () => {
   return (
     <div className="Scans">
       <ParallaxProvider>
-        <ParallaxBanner className="homescreen" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
+        <ParallaxBanner className="homescreen banner" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
           <h1 className="title">SCANS</h1>
         </ParallaxBanner>
         <div className="container">

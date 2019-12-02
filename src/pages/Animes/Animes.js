@@ -57,7 +57,7 @@ const Animes = () => {
     return (
         <div className="Animes">
             <ParallaxProvider>
-                <ParallaxBanner className="homescreen" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
+                <ParallaxBanner className="homescreen banner" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
                     <h1 className="title">ANIMES</h1>
                 </ParallaxBanner>
                 <div className="card-container">

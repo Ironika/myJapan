@@ -49,7 +49,7 @@ const Home = () => {
     <div className="Home">
 
       <ParallaxProvider>
-        <ParallaxBanner className="homescreen" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
+        <ParallaxBanner className="homescreen banner" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
           <h1 className="title">HOME</h1>
         </ParallaxBanner>
         <FlipCard front={<PresentationVF />} back={<PresentationVA />} />
@@ -78,23 +78,6 @@ const Home = () => {
         <LazyLoad placeholder={<Loader />}>
           <ParallaxBanner className="homescreen" layers={[{ image: homescreen, amount: 0.5 }]} style={{ height: '450px' }}></ParallaxBanner>
         </LazyLoad>
-        <section>
-          <div className="scans">
-            <h2>Last Scans</h2>
-            <div className="card-container">
-              {   /*loader ? <Loader /> :
-                              news.map(item =>
-                                <LazyLoad key={item.pubDate} placeholder={<Loader />}>
-                                  <Card key={item.pubDate} news={item} />
-                                </LazyLoad>
-                              )
-                          */}
-            </div>
-            <div className="cta">
-              <Link to={SCANS}>Voir plus</Link>
-            </div>
-          </div>
-        </section>
       </ParallaxProvider>
 
     </div>

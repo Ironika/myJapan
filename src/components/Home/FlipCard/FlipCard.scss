@@ -1,8 +1,18 @@
+@import "../../../App.scss";
+
 .flip-card {
-    width: 50%;
+    width: 60%;
     margin: 20px auto;
     height: 300px;
     perspective: 1000px;
+    @media screen and (max-width: $md) {
+      width: 90%;
+      height: 450px;
+    }
+    @media screen and (min-width: $md) and (max-width: $lg) {
+      width: 75%;
+      height: 350px;
+    }
   }
 
   .flip-card-inner {

@@ -6,11 +6,25 @@ $five-color: #fef4f4;
 
 $font: 'Kaushan Script', cursive;
 
+$xs : 575px;
+$md : 767px;
+$lg : 991px;
+$xlg : 1199px;
+
 body {
     background-color: $five-color;
     font-family: $font;
+    height: 100%;
 }
 
 .parallax-outer {
     z-index: -1;
+}
+
+.banner {
+    .parallax-banner-layer-0 {
+        @media screen and (max-width: $xs) {
+            background-position: center right !important;
+        }
+    }
 }
