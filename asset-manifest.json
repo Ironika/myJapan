@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "https://ironika.github.io/myJapan/static/css/main.558d6534.chunk.css",
-    "main.js": "https://ironika.github.io/myJapan/static/js/main.177983b9.chunk.js",
-    "main.js.map": "https://ironika.github.io/myJapan/static/js/main.177983b9.chunk.js.map",
-    "runtime-main.js": "https://ironika.github.io/myJapan/static/js/runtime-main.676d104b.js",
-    "runtime-main.js.map": "https://ironika.github.io/myJapan/static/js/runtime-main.676d104b.js.map",
-    "static/js/2.5ca209f4.chunk.js": "https://ironika.github.io/myJapan/static/js/2.5ca209f4.chunk.js",
-    "static/js/2.5ca209f4.chunk.js.map": "https://ironika.github.io/myJapan/static/js/2.5ca209f4.chunk.js.map",
-    "index.html": "https://ironika.github.io/myJapan/index.html",
-    "precache-manifest.782efccd5fb5fe663f5f33bf678ac274.js": "https://ironika.github.io/myJapan/precache-manifest.782efccd5fb5fe663f5f33bf678ac274.js",
-    "service-worker.js": "https://ironika.github.io/myJapan/service-worker.js",
-    "static/css/main.558d6534.chunk.css.map": "https://ironika.github.io/myJapan/static/css/main.558d6534.chunk.css.map",
-    "static/media/adala.png": "https://ironika.github.io/myJapan/static/media/adala.7c8d63fd.png",
-    "static/media/banner.jpg": "https://ironika.github.io/myJapan/static/media/banner.7395ebb6.jpg",
-    "static/media/cerisier.png": "https://ironika.github.io/myJapan/static/media/cerisier.ef6ecf9b.png",
-    "static/media/homescreen.jpg": "https://ironika.github.io/myJapan/static/media/homescreen.4f6a802d.jpg",
-    "static/media/homescreen2.jpg": "https://ironika.github.io/myJapan/static/media/homescreen2.7933a83d.jpg",
-    "static/media/homescreen3.jpg": "https://ironika.github.io/myJapan/static/media/homescreen3.a36ad686.jpg",
-    "static/media/loader.gif": "https://ironika.github.io/myJapan/static/media/loader.7b3f4161.gif"
+    "main.css": "myJapan/static/css/main.558d6534.chunk.css",
+    "main.js": "myJapan/static/js/main.efa54fa0.chunk.js",
+    "main.js.map": "myJapan/static/js/main.efa54fa0.chunk.js.map",
+    "runtime-main.js": "myJapan/static/js/runtime-main.77e7f977.js",
+    "runtime-main.js.map": "myJapan/static/js/runtime-main.77e7f977.js.map",
+    "static/js/2.5ca209f4.chunk.js": "myJapan/static/js/2.5ca209f4.chunk.js",
+    "static/js/2.5ca209f4.chunk.js.map": "myJapan/static/js/2.5ca209f4.chunk.js.map",
+    "index.html": "myJapan/index.html",
+    "precache-manifest.fe8275829980bd162ec5c0b5be1cf181.js": "myJapan/precache-manifest.fe8275829980bd162ec5c0b5be1cf181.js",
+    "service-worker.js": "myJapan/service-worker.js",
+    "static/css/main.558d6534.chunk.css.map": "myJapan/static/css/main.558d6534.chunk.css.map",
+    "static/media/adala.png": "myJapan/static/media/adala.7c8d63fd.png",
+    "static/media/banner.jpg": "myJapan/static/media/banner.7395ebb6.jpg",
+    "static/media/cerisier.png": "myJapan/static/media/cerisier.ef6ecf9b.png",
+    "static/media/homescreen.jpg": "myJapan/static/media/homescreen.4f6a802d.jpg",
+    "static/media/homescreen2.jpg": "myJapan/static/media/homescreen2.7933a83d.jpg",
+    "static/media/homescreen3.jpg": "myJapan/static/media/homescreen3.a36ad686.jpg",
+    "static/media/loader.gif": "myJapan/static/media/loader.7b3f4161.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.676d104b.js",
+    "static/js/runtime-main.77e7f977.js",
     "static/js/2.5ca209f4.chunk.js",
     "static/css/main.558d6534.chunk.css",
-    "static/js/main.177983b9.chunk.js"
+    "static/js/main.efa54fa0.chunk.js"
   ]
 }
