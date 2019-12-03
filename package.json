@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
+    "deployGh": "npm run build && gh-pages -d build",
+    "deploy" : "firebase deploy --only hosting:myjapan-71e51"
   },
   "eslintConfig": {
     "extends": "react-app"
