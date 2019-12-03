@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import firebase from './firebase'
-import Axios from 'axios';
+// import firebase from './firebase'
+// import Axios from 'axios';
 
-Axios.get('https://us-central1-myjapan-71e51.cloudfunctions.net/api/news').then((data) => console.log(data))
+// Axios.get('https://us-central1-myjapan-71e51.cloudfunctions.net/api/news').then((data) => console.log(data))
 
 if(!localStorage.getItem('cache'))
     localStorage.setItem('cache', JSON.stringify({}))
