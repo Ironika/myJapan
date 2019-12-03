@@ -1,0 +1,1 @@
+const API = 'https://us-central1-myjapan-71e51.cloudfunctions.net/api/'
