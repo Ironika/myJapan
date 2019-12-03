@@ -1,92 +1,93 @@
-'use strict';
-
 const axios = require('axios');
+const accents = require('remove-accents');
+const cheerio = require('cheerio');
 const { isInList } = require('./Shared');
 const { ANIME_SEIKOU, UNIVERSANIMEIZ } = require('../rss');
-const cheerio = require('cheerio');
 
-class Animes  {
-    getAnimes = async () => {
-        let animes = []
-        await this.getAnimeSeikou(animes)
-        // await this.getUniversAnimeiz(animes)
-        return animes
-    }
-    getAnimeSeikou = async (array) => {
-        for(let i = 1; i <= 2; i++) {
-            let json = await axios.get(ANIME_SEIKOU + i + '/')
-            this.formatJsonAnimeSeikou(json, array)
-        }
-        return array
-    }
-    
-    getUniversAnimeiz = async (array) => {
-        for(let i = 1; i <= 2; i++) {
-            let json = await axios.get(UNIVERSANIMEIZ + i + '/')
-            this.formatJsonUniversAnimeiz(json, array)
-        }
-        return array
-    }
+async function getAnimes() {
+    let animes = []
+    await getAnimeSeikou(animes)
+    await getUniversAnimeiz(animes)
 
-    formatJsonAnimeSeikou = (json, array) => {
-        const $ = cheerio.load(json.data)
-        const items = $('.slide-entry')
-        console.error('ITEMS ',items.children())
-        console.error('Length ',items.children().length)
-        for(let i = 0; i < items.length; i++) {
-            console.error('totototo ',items[i].children[3].children[5].text())
-            let title = items[i].children[3].children[5].innerText
-            title = title.replace('VOSTFR', '')
-            title = title.replace('vostfr', '')
-            if(isInList(title.toUpperCase(), 'animes')) {
-                let img = items[i].children[0].children[0].attributes[2].value
-                let date = items[i].children[3].children[3].innerText
-                let link = items[i].children[0].href
-                let item = {
-                    title: title,
-                    link: link,
-                    // pubDate: date,
-                    site: 'Anime Seikou',
-                    img: img,
-                    lang: 'VOSTFR'
-                }
-                if(!this.isInArray(item, array))
-                    array.push(item)
-            }
-        }
+    animes.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+
+    return animes
+}
+
+async function getAnimeSeikou(array) {
+    for(let i = 1; i <= 2; i++) {
+        let json = await axios.get(ANIME_SEIKOU + i + '/')
+        formatJsonAnimeSeikou(json, array)
     }
-    
-    formatJsonUniversAnimeiz = (json, array) => {
-        const doc = DOMParser().parseFromString(json.data, 'text/html')
-        const items = doc.getElementsByClassName('recent-posts')[0]
-        for(let i = 0; i < items.children.length; i++) {
-            let title = items.children[i].children[1].children[1].innerText
-            title = title.replace('VOSTFR', '')
-            title = title.replace('vostfr', '')
-            if(isInList(title.toUpperCase(), 'animes') && !title.includes('VF')) {
-                let episode = items.children[i].children[1].children[3].innerText
-                let img = items.children[i].children[0].children[0].children[0].attributes[0].value
-                let link = items.children[i].children[0].children[0].href
-                let item = {
-                    title: title + ' ' + episode.replace('Épisode ', ''),
-                    link: link,
-                    site: 'Univers Animeiz',
-                    img: img,
-                    lang: 'VOSTFR'
-                }
-                if(!this.isInArray(item, array))
-                    array.push(item)
-            }
-        }
+    return array
+}
+
+async function getUniversAnimeiz(array) {
+    for(let i = 1; i <= 2; i++) {
+        let json = await axios.get(UNIVERSANIMEIZ + i + '/')
+        formatJsonUniversAnimeiz(json, array)
     }
-    isInArray = (item, array) => {
-        let isInArray = false
-        for(let anime of array){
-            if(anime.title.includes(item.title))
-                return isInArray = true
+    return array
+}
+
+function formatJsonAnimeSeikou(json, array) {
+    const $ = cheerio.load(json.data)
+    const items = $('.slide-entry')
+    for(let i = 0; i < items.length; i++) {
+        let title = $('.slide-entry > .hidden > span[itemprop="mainEntityOfPage"] > span[itemprop="name"]')[i].children[0].data
+        title = title.replace('VOSTFR', '')
+        title = title.replace('vostfr', '')
+        if(isInList(title.toUpperCase(), 'animes')) {
+            let img = $('.slide-entry > .slide-image > img')[i].attribs.src
+            let date = $('.slide-entry > .hidden > span[itemprop="datePublished"]')[i].children[0].data
+            let link = $('.slide-entry > .slide-image')[i].attribs.href
+            let item = {
+                title: title,
+                link: link,
+                pubDate: new Date(date),
+                site: 'Anime Seikou',
+                img: img,
+                lang: 'VOSTFR'
+            }
+            if(!isInArray(item, array))
+                array.push(item)
         }
-        return isInArray
     }
 }
 
-module.exports = Animes;
+function formatJsonUniversAnimeiz(json, array) {
+    const $ = cheerio.load(json.data)
+    const items = $('.post')
+    for(let i = 0; i < items.length; i++) {
+        let title = $('.post > .post-content > h2 > a')[i].children[0].data
+        title = title.replace('VOSTFR', '')
+        title = title.replace('vostfr', '')
+        if(isInList(title.toUpperCase(), 'animes') && !title.includes('VF')) {
+            let episode = $('.post > .post-content > p')[i].children[0].data
+            let img = $('.post > .post-thumb > a > img')[i].attribs.src
+            let link = $('.post > .post-thumb > a')[i].attribs.href
+            let date = $('.post > .post-content > .post-meta > .meta-date')[i].children[0].data
+            let item = {
+                title: title + ' ' + episode.replace('Épisode ', ''),
+                link: link,
+                pubDate: new Date(accents.remove(date)),
+                site: 'Univers Animeiz',
+                img: img,
+                lang: 'VOSTFR'
+            }
+            if(!isInArray(item, array))
+                array.push(item)
+        }
+    }
+}
+
+function isInArray(item, array) {
+    let isInArray = false
+    for(let anime of array){
+        if(anime.title.includes(item.title))
+            return isInArray = true
+    }
+    return isInArray
+}
+
+module.exports = getAnimes;

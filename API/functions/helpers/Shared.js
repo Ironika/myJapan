@@ -1,5 +1,3 @@
-'use strict';
-
 const axios = require('axios')
 const convert = require('xml-js');
 const { scansList, animeList } = require('../mangas');

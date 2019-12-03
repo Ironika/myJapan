@@ -4,8 +4,9 @@ const functions = require('firebase-functions');
 const express = require("express");
 const cors = require("cors");
 
-const News = require('./helpers/News');
-const Animes = require('./helpers/Animes');
+const getNews = require('./helpers/News');
+const getAnimes = require('./helpers/Animes');
+const { getScans, getScansVA } = require('./helpers/Scans');
 
 const app = express()
 
@@ -17,21 +18,35 @@ const corsOptions = {
 app.options('*', cors())
 
 app.get("/news", cors(corsOptions), (request, response) => {
-    const news = new News()
-    news.getNews().then((news) => {
+    getNews().then((news) => {
         response.json({status: 200, datas: news})
     }).catch(e => {
         response.json({status: 501, datas: [], message: e})
-    }) 
+    })
 })
 
 app.get("/animes", cors(corsOptions), (request, response) => {
-    const animes = new Animes()
-    animes.getAnimes().then((animes) => {
+    getAnimes().then((animes) => {
         response.json({status: 200, datas: animes})
     }).catch(e => {
         response.json({status: 501, datas: [], message: e})
-    }) 
+    })
+})
+
+app.get("/scans", cors(corsOptions), (request, response) => {
+    getScans().then((scans) => {
+        response.json({status: 200, datas: scans})
+    }).catch(e => {
+        response.json({status: 501, datas: [], message: e})
+    })
+})
+
+app.get("/scansva", cors(corsOptions), (request, response) => {
+    getScansVA().then((scans) => {
+        response.json({status: 200, datas: scans})
+    }).catch(e => {
+        response.json({status: 501, datas: [], message: e})
+    })
 })
 
 const api = functions.https.onRequest(app)
