@@ -19,33 +19,33 @@ app.options('*', cors())
 
 app.get("/news", cors(corsOptions), (request, response) => {
     getNews().then((news) => {
-        response.json({status: 200, datas: news})
+        response.json(news)
     }).catch(e => {
-        response.json({status: 501, datas: [], message: e})
+        response.json(e)
     })
 })
 
 app.get("/animes", cors(corsOptions), (request, response) => {
     getAnimes().then((animes) => {
-        response.json({status: 200, datas: animes})
+        response.json(animes)
     }).catch(e => {
-        response.json({status: 501, datas: [], message: e})
+        response.json(e)
     })
 })
 
 app.get("/scans", cors(corsOptions), (request, response) => {
     getScans().then((scans) => {
-        response.json({status: 200, datas: scans})
+        response.json(scans)
     }).catch(e => {
-        response.json({status: 501, datas: [], message: e})
+        response.json(e)
     })
 })
 
 app.get("/scansva", cors(corsOptions), (request, response) => {
     getScansVA().then((scans) => {
-        response.json({status: 200, datas: scans})
+        response.json(scans)
     }).catch(e => {
-        response.json({status: 501, datas: [], message: e})
+        response.json(e)
     })
 })
 
