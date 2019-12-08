@@ -12,15 +12,12 @@
     }
     @media screen and (min-width: $md) and (max-width: $lg) {
         width: calc(30% - 20px);
-        margin: 10px auto;
     }
     @media screen and (min-width: $lg) and (max-width: $xlg) {
         width: calc(25% - 20px);
-        margin: 10px auto;
     }
     @media screen and (min-width: $xlg) {
         width: calc(20% - 20px);
-        margin: 10px auto;
     }
     &:hover {
         .card-anime {

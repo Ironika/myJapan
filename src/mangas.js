@@ -9,6 +9,7 @@ export const scansList = [
     'BOKU NO HERO ACADEMIA',
     'BLACK CLOVER',
     'ONE PUNCH MAN',
+    'ONEPUNCH-MAN',
     'DRAGON BALL SUPER',
     'FAIRY TAIL:',
     "EDEN'S ZERO",
@@ -38,7 +39,7 @@ export const scansList = [
     'ETERNAL REVERENCE',
     'THE MYTHICAL REALM',
     'GOD OF THE CITY',
-    'THE LEGENDARY MOOLIGHT',
+    'THE LEGENDARY MOONLIGHT',
     'SEALED DIVINE THRONE',
     'LEGEND OF PHOENIX',
     'MARTIAL MOVEMENT UPHEAVAL',
@@ -60,7 +61,8 @@ export const scansList = [
     'A RETURNERS MAGIC SHOULD BE SPECIAL',
     'HOLY ANCESTOR',
     'THE NEW GATE',
-    'THE BREAKER'
+    'THE BREAKER',
+    'MASTER OF LEGENDARY REALMS'
 ]
 
 export const animeList = [
