@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/myJapan/static/css/main.222838b7.chunk.css",
-    "main.js": "/myJapan/static/js/main.f9bdddca.chunk.js",
-    "main.js.map": "/myJapan/static/js/main.f9bdddca.chunk.js.map",
+    "main.js": "/myJapan/static/js/main.b4bc2674.chunk.js",
+    "main.js.map": "/myJapan/static/js/main.b4bc2674.chunk.js.map",
     "runtime-main.js": "/myJapan/static/js/runtime-main.307af44b.js",
     "runtime-main.js.map": "/myJapan/static/js/runtime-main.307af44b.js.map",
     "static/js/2.16fd53d8.chunk.js": "/myJapan/static/js/2.16fd53d8.chunk.js",
     "static/js/2.16fd53d8.chunk.js.map": "/myJapan/static/js/2.16fd53d8.chunk.js.map",
     "index.html": "/myJapan/index.html",
-    "precache-manifest.d35a684e3b6780b44214d47e8b2939ca.js": "/myJapan/precache-manifest.d35a684e3b6780b44214d47e8b2939ca.js",
+    "precache-manifest.0616a0de92bdd97423da39305c07a1af.js": "/myJapan/precache-manifest.0616a0de92bdd97423da39305c07a1af.js",
     "service-worker.js": "/myJapan/service-worker.js",
     "static/css/main.222838b7.chunk.css.map": "/myJapan/static/css/main.222838b7.chunk.css.map",
     "static/media/adala.png": "/myJapan/static/media/adala.7c8d63fd.png",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.307af44b.js",
     "static/js/2.16fd53d8.chunk.js",
     "static/css/main.222838b7.chunk.css",
-    "static/js/main.f9bdddca.chunk.js"
+    "static/js/main.b4bc2674.chunk.js"
   ]
 }
