@@ -15,6 +15,7 @@ const Animes = () => {
     const [displayedAnimes, setDisplayedAnimes] = useState([])
     const [hasMore, setHasMore] = useState(true)
     const [loader, setLoader] = useState(true)
+    const [deepLoader, setDeepLoader] = useState(false)
 
     useEffect(() => {
         const fetchDatas = async () => {
@@ -22,6 +23,9 @@ const Animes = () => {
             setAnimes(currentAnimes)
             setDisplayedAnimes(currentAnimes.slice(0, pageToDisplay))
             setLoader(false)
+            if(deepLoader) {
+                setDeepLoader(false)
+            }
         }
 
         const cache = JSON.parse(localStorage.getItem('cache'))
@@ -30,13 +34,15 @@ const Animes = () => {
             setAnimes(currentAnimes)
             setDisplayedAnimes(currentAnimes.slice(0, pageToDisplay))
             setLoader(false)
-            if(dateDiff(new Date(cache.animesDate), new Date()).min > 15)
+            if(dateDiff(new Date(cache.animesDate), new Date()).min > 10) {
                 fetchDatas()
+                setDeepLoader(true)
+            }
         } else {
             fetchDatas()
         }
 
-    }, []);
+    }, [deepLoader]);
 
     const loadItems = () => {
         let nbToDisplay = displayedAnimes.length + pageToDisplay
@@ -60,6 +66,7 @@ const Animes = () => {
                 <ParallaxBanner className="homescreen banner" layers={[{ image: banner, amount: 0.5 }]} style={{ height: '300px' }}>
                     <h1 className="title">ANIMES</h1>
                 </ParallaxBanner>
+                {deepLoader && <Loader style={{marginTop: '20px'}} />}
                 <div className="card-container">
                     {   loader ? <Loader /> :
                         displayedAnimes.map((item, index) =>

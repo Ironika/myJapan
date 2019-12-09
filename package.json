@@ -41,8 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "@comment-homepage": "http://ironika.github.io/myJapan",
-  "@comment-devDependencies": {
+  "homepage": "http://ironika.github.io/myJapan",
+  "devDependencies": {
     "gh-pages": "^2.1.1"
   }
 }

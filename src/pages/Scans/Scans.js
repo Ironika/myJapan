@@ -21,6 +21,7 @@ const Scans = () => {
   const [hasMore, setHasMore] = useState(true)
   const [loader, setLoader] = useState(true)
   const [loaderVa, setLoaderVa] = useState(true)
+  const [deepLoader, setDeepLoader] = useState(false)
 
   useEffect(() => {
     const fetchScans = async () => {
@@ -35,6 +36,7 @@ const Scans = () => {
       setLoaderVa(false)
       if(flag) {
         setHasMore(true)
+        setDeepLoader(false)
       }
     }
 
@@ -43,7 +45,7 @@ const Scans = () => {
       const currentScans = cache.scans
       setScans(currentScans)
       setLoader(false)
-      if (dateDiff(new Date(cache.scansDate), new Date()).min > 10)
+      if (dateDiff(new Date(cache.scansDate), new Date()).min > 10) 
         fetchScans()
     } else {
       fetchScans()
@@ -54,14 +56,15 @@ const Scans = () => {
       setScansVa(currentScansVa)
       setDisplayedScansVa(currentScansVa.slice(0, pageToDisplay))
       setLoaderVa(false)
-      if (dateDiff(new Date(cache.scansVaDate), new Date()).min > 10){
+      if (dateDiff(new Date(cache.scansVaDate), new Date()).min > 10) {
         fetchScansVa(true)
+        setDeepLoader(true)
       }
     } else {
       fetchScansVa()
     }
 
-  }, []);
+  }, [deepLoader, nbToDisplay]);
 
   const loadItems = () => {
     let currentNbToDisplay = displayedScansVa.length + pageToDisplay
@@ -99,6 +102,7 @@ const Scans = () => {
             </div>
           </div>
           <div className="right">
+            {deepLoader && <Loader style={{marginTop: '20px'}}/>}
             <div className="card-container">
               {loaderVa ? <Loader /> :
                 displayedScansVa.map((item, index) =>

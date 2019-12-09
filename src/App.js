@@ -11,7 +11,7 @@ import Animes from './pages/Animes/Animes';
 import * as ROUTES from './routes';
 
 const App = () => (
-  <Router basename={process.env.PUBLIC_URL}>
+  <Router>
     <React.Fragment>
       <Header />
 

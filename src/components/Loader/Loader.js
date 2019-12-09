@@ -10,8 +10,8 @@ import loader from '../../assets/img/loader.gif';
 //     </div>
 // );
 
-const Loader = () => (
-    <div className="loader">
+const Loader = (props) => (
+    <div className="loader" style={props.style}>
         <img src={loader} alt="loader"/>
     </div>
 );
