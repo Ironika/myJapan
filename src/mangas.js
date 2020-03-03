@@ -46,7 +46,6 @@ export const scansList = [
     'SOLO LEVELING',
     'SOUL LAND',
     'SPIRIT BLADE MOUNTAIN',
-<<<<<<< HEAD
     'SPIRIT SWORD SOVEREIGN',
     'STAR MARTIAL GOD TECHNIQUE',
     'TALES OF DEMONS AND GODS',
