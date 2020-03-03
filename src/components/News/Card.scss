@@ -9,11 +9,13 @@
     }
     @media screen and (min-width: $md) and (max-width: $lg) {
         width: calc(30% - 20px);
-        margin: 10px auto;
     }
     @media screen and (min-width: $lg) {
         width: calc(25% - 20px);
-        margin: 10px auto;
+    }
+
+    @media screen and (min-width: $xlg) {
+        width: calc(20% - 20px);
     }
 
     box-shadow: 5px 5px 5px $main-color;

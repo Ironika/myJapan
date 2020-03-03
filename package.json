@@ -1,11 +1,12 @@
 {
-  "name": "mangas",
+  "name": "myJapan",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "firebase": "^7.5.0",
     "lodash.debounce": "^4.0.8",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
@@ -22,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "firebase deploy --only hosting:myjapan-71e51",
+    "deployGh": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
